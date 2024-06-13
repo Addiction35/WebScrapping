@@ -1,0 +1,39 @@
+{
+  "base_url": "https://1oakwholesale.com",
+  "cookie": "DEV_PHPSESSID=ho304e0a9ahnaqnag98hmrk10b",
+  "product-category": [
+      {
+          "name": "Devices",
+          "selector": "a[href*='https://1oakwholesale.com/vape/devices']"
+      },
+      {
+          "name": "E-Juice",
+          "selector": "a[href*='https://1oakwholesale.com/vape/ejuices']"
+      },
+      {
+          "name": "Disposables",
+          "selector": "a[href*='https://1oakwholesale.com/vape/disposables']"
+      },
+      {
+          "name": "Delta",
+          "selector": "a[href*='https://1oakwholesale.com/cbd']"
+      }
+  ],
+  "data_selectors": {
+      "product_url": "div > a.overlay-link",
+      "product_name": "h1.page-title span.base",
+      "sku": "div.product.attribute.sku div.value",
+      "stock_level": "div.stock.available",
+      "wholesale_price": "",
+      "options": {
+          "name": "td.col.item strong.product-item-name",
+          "product-id": "td.col.item[data-product-id]",
+          "special-price": "td.col.item div.price-box span.special-price span.price-wrapper span.price",
+          "stock_level": "td.col.item span.available_qty"
+      }
+  },
+  "selectors": {
+      "next_page": "a.next.page-numbers"
+  }
+}
+
