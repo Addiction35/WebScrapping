@@ -3,7 +3,6 @@ import aiofiles
 import aiohttp
 import json
 from bs4 import BeautifulSoup
-from aiohttp import ClientError
 
 async def load_config(filename):
     """Loads the configuration file as a JSON object."""
@@ -17,7 +16,7 @@ async def fetch_url(session, url, retries=3):
         try:
             async with session.get(url) as response:
                 return await response.text()
-        except ClientError as e:
+        except aiohttp.ClientError as e:
             print(f"Attempt {attempt + 1} failed for {url}: {e}")
             await asyncio.sleep(2 ** attempt)  # Exponential backoff
     return None
@@ -30,10 +29,6 @@ async def get_product_urls(config, scraperapi_key):
         for category in config['product-category']:
             try:
                 print(category['name'])
-                if 'url' not in category:
-                    print(f"Warning: 'url' key is missing in category: {category['name']}")
-                    continue  # Skip this category if 'url' key is missing
-                
                 url = category['url']
                 scraperapi_url = f"https://api.scraperapi.com?key={scraperapi_key}&url={url}"
 
@@ -43,9 +38,8 @@ async def get_product_urls(config, scraperapi_key):
                     continue
 
                 soup = BeautifulSoup(html_content, 'lxml')
-
                 product_links = soup.select(config['data_selectors']['product_url'])
-                
+
                 for link in product_links:
                     product_urls.append(link['href'])
             except Exception as e:

@@ -5,23 +5,23 @@
   "product-category": [
     {
       "name": "Devices",  
-      "url": "https://demandvape.com/kits"
+      "selector": "https://demandvape.com/kits"
     },
     {
       "name": "E-Juice",
-      "url": "https://demandvape.com/liquids"
+      "selector": "https://demandvape.com/liquids"
     },
     {
       "name": "Disposables",
-      "url": "https://demandvape.com/disposables"
+      "selector": "https://demandvape.com/disposables"
     },
     {
       "name": "Synthetic",
-      "url": "https://demandvape.com/synthetic-e-liquids"
+      "selector": "https://demandvape.com/synthetic-e-liquids"
     },
     {
       "name": "Smoke Shop",
-      "url": "https://demandvape.com/Alternative-Hardware"
+      "selector": "https://demandvape.com/Alternative-Hardware"
     }
   ],
   "data_selectors": {
@@ -36,7 +36,8 @@
       "special-price": "td.qfo-price-td::text",
       "stock_level": "td.col.item span.available_qty::text"
     },
-    "next_page": "ul.pagination > li.active + li > a::attr(href)"
+    "selectors": {
+	    "next_page": "ul.pagination > li.active + li > a::attr(href)"
+    }
   }
-}
 
