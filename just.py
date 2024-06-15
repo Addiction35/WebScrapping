@@ -1,15 +1,18 @@
 import asyncio
 import json
 from bs4 import BeautifulSoup
-from mitmproxy import ctx, http, exceptions
+from mitmproxy import ctx, http
+
 
 # Global variable to store intercepted URLs
 intercepted_urls = set()
 
 
 class Intercept:
-    def __init__(self):
+    def __init__(self, configs):
+        self.configs = configs
         self.product_urls = []
+        self.event = asyncio.Event()
 
     def request(self, flow: http.HTTPFlow) -> None:
         intercepted_urls.add(flow.request.url)
@@ -17,11 +20,16 @@ class Intercept:
     def response(self, flow: http.HTTPFlow) -> None:
         if flow.request.url in intercepted_urls:
             intercepted_urls.remove(flow.request.url)
-            self.process_response(flow)
+            asyncio.create_task(self.process_response(flow))
 
-    def process_response(self, flow: http.HTTPFlow) -> None:
+    async def process_response(self, flow: http.HTTPFlow) -> None:
         ctx.log.info(f"Intercepted URL: {flow.request.url}")
         ctx.log.info(f"Response Status Code: {flow.response.status_code}")
+
+        # Find corresponding config for the intercepted URL
+        config = self.find_config(flow.request.url)
+        if not config:
+            return
 
         # Process only HTML responses (text/html)
         if "text/html" in flow.response.headers.get("content-type", ""):
@@ -54,26 +62,42 @@ class Intercept:
             except Exception as e:
                 ctx.log.error(f"Error parsing response: {e}")
 
-    def save_products_to_file(self):
-        with open("scraped_products.json", "w") as f:
-            json.dump(self.product_urls, f, indent=4)
-        ctx.log.info("Scraped product data saved to scraped_products.json")
+    def find_config(self, url):
+        for config in self.configs:
+            if url.startswith(config['base_url']):
+                return config
+        return None
+
+    async def save_products_to_file(self):
+        try:
+            with open("scraped_products.json", "w") as f:
+                json.dump(self.product_urls, f, indent=4)
+            ctx.log.info("Scraped product data saved to scraped_products.json")
+        except Exception as e:
+            ctx.log.error(f"Error saving to file: {e}")
+        finally:
+            self.event.set()
 
 
-addons = [
-    Intercept()
-]
+def load_config(filename):
+    """Loads the configuration file as a JSON object."""
+    with open(filename, 'r') as f:
+        conf = json.load(f)
+    return conf
 
 
 async def main():
+    configs = load_config('config.json')
+    intercept = Intercept(configs)
+
     try:
-        await asyncio.sleep(999999)
+        await intercept.event.wait()
     except KeyboardInterrupt:
         pass
-    intercept.save_products_to_file()
+
+    await intercept.save_products_to_file()
 
 
 if __name__ == "__main__":
-    intercept = Intercept()
     asyncio.run(main())
 
