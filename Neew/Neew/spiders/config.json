@@ -1,0 +1,127 @@
+[
+  {
+  "url": "https://1oakwholesale.com",
+  "cookie":"DEV_PHPSESSID=0s50hvmvr1qjqr8tgantfk2ns0",
+  
+  "product-category": [
+      {
+        "name": "Devices",  
+        "selector": "a[href='https://1oakwholesale.com/vape/devices.html']"  
+      },
+      {
+        "name": "E-Juice",
+        "selector": "a[href='https://1oakwholesale.com/vape/ejuices.html']"  
+      },
+      {
+          "name": "Disposables",
+          "selector": "a[href='https://1oakwholesale.com/vape/disposables.html']"  
+        },
+        {
+          "name": "Delta",
+          "selector": "a[href='https://1oakwholesale.com/cbd.html']"  
+        }
+     
+    ],
+  "data_selectors": {
+      "product_url":"div > a.overlay-link",
+      "product_name": "h1.page-title span.base",
+      "sku": "div.product.attribute.sku div.value",
+      "stock_level": "div.stock.available",
+      "wholesale_price": "",
+      "options": {
+        "name":"td.col.item strong.product-item-name",
+        "product-id":"td.col.item[data-product-id]",
+        "special-price":"td.col.item div.price-box span.special-price span.price-wrapper span.price",
+        "stock_level":"td.col.item span.available_qty"
+      }
+  },
+ "selectors": {
+  
+  "next_page": "a[href='https://1oakwholesale.com/vape/devices.html?p=1']"
+ } 
+},
+{
+  "url": "https://demandvape.com/",
+  "cookie":"PHPSESSID=15df8b096f07f7de77611e3866705835",
+  
+  "product-category": [
+      {
+        "name": "Devices",  
+        "selector": "a[href='https://demandvape.com/kits']"  
+      },
+      {
+        "name": "E-Juice",
+        "selector": "a[href='https://demandvape.com/liquids']"  
+      },
+      {
+          "name": "Disposables",
+          "selector": "a[href='https://demandvape.com/disposables']"  
+        },
+        {
+          "name": "Synthetic",
+          "selector": "a[href='https://demandvape.com/synthetic-e-liquids']"  
+        },
+        {
+          "name": "Smoke Shop",
+          "selector": "a[href='https://demandvape.com/Alternative-Hardware']"  
+        }
+     
+    ],
+  "data_selectors": {
+      "product_url":"h4.name a[href]",
+      "product_name": "h4.name",
+      "sku": "li.p-model",
+      "stock_level": "span.journal-stock.instock",
+      "wholesale_price": "li.product-price",
+      "options": {
+        "name":"span.qfo-value-name",
+        "product-id":"",
+        "special-price":"td.qfo-price-td",
+        "stock_level":"td.col.item span.available_qty"
+      },
+      "next_page":"ul > li.active ~ li a:contains('>')"
+  }
+},
+{
+  "url": "https://www.gsdis.com/",
+  "cookie":"_ga=GA1.1.2045665429.1717074391; sbjs_migrations=1418474375998%3D1; sbjs_current_add=fd%3D2024-06-13%2015%3A50%3A07%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.gsdis.com%2F%7C%7C%7Crf%3D%28none%29; sbjs_first_add=fd%3D2024-06-13%2015%3A50%3A07%7C%7C%7Cep%3Dhttps%3A%2F%2Fwww.gsdis.com%2F%7C%7C%7Crf%3D%28none%29; sbjs_current=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29; sbjs_first=typ%3Dtypein%7C%7C%7Csrc%3D%28direct%29%7C%7C%7Cmdm%3D%28none%29%7C%7C%7Ccmp%3D%28none%29%7C%7C%7Ccnt%3D%28none%29%7C%7C%7Ctrm%3D%28none%29%7C%7C%7Cid%3D%28none%29; sbjs_udata=vst%3D1%7C%7C%7Cuip%3D%28none%29%7C%7C%7Cuag%3DMozilla%2F5.0%20%28X11%3B%20Linux%20x86_64%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Safari%2F537.36; _ga_6FT9J9PB9R=GS1.1.1718293806.4.1.1718293901.0.0.0; sbjs_session=pgs%3D4%7C%7C%7Ccpg%3Dhttps%3A%2F%2Fwww.gsdis.com%2Fmy-account%2F",
+  
+  "product-category": [
+      {
+        "name": "Devices",  
+        "selector": ""  
+      },
+      {
+        "name": "E-Juice",
+        "selector": "a[href='https://www.gsdis.com/product-category/e-liquid-5/']"  
+      },
+      {
+          "name": "Disposables",
+          "selector": "a[href='https://www.gsdis.com/product-category/disposables/']"  
+        },
+        {
+          "name": "Accessories",
+          "selector": "a[href='https://www.gsdis.com/product-category/alternatives/accessories/']"  
+        },
+        {
+          "name": "Alternatives",
+          "selector": "a[href='https://www.gsdis.com/product-category/alternatives/']"  
+        }
+     
+    ],
+  "data_selectors": {
+      "product_url":"a.woocommerce-LoopProduct-link woocommerce-loop-product__link",
+      "product_name": "h2.woocommerce-loop-product__title",
+      "stock_level": "span.journal-stock.instock",
+      "wholesale_price": ".price span:nth-child(2)",
+      "options": {
+        "name":"span.boldTxt",
+        "sku": ".col-md-4.pvSkuPdtl",
+        "product-id":"",
+        "special-price":".col-md-2.pvPrc span:nth-child(2)",
+        "stock_level":"span.pvStckINS"
+      },
+      "next_page":"li.next.page-numbers a"
+  }
+}
+]
